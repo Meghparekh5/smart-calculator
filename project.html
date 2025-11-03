@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Smart Calculator</title>
+</head>
+
+<body>
+  <h1>Smart Calculator</h1>
+  <p id="result"></p>
+
+  <script>
+    // Arithmetic
+    function arithmetic(num1, num2, op) {
+      let result;
+      switch (op) {
+        case '+':
+          result = num1 + num2;
+          break;
+        case '-':
+          result = num1 - num2;
+          break;
+        case '*':
+          result = num1 * num2;
+          break;
+        case '/':
+          result = num2 !== 0 ? num1 / num2 : "Cannot divide by 0";
+          break;
+        case '%':
+          result = num1 % num2;
+          break;
+        default:
+          result = "Invalid Operator";
+      }
+      console.log(`Arithmetic Result: ${result}`);
+      alert(`Result: ${result}`);
+      document.write(`<br>Arithmetic Result: ${result}`);
+      document.getElementById("result").innerHTML = `Result: ${result}`;
+      return result;
+    }
+
+    //  Square 
+    function square(num) {
+      const sq = num * num;
+      console.log(`Square: ${sq}`);
+      alert(`Square: ${sq}`);
+      document.write(`<br>Square: ${sq}`);
+      document.getElementById("result").innerHTML = `Square: ${sq}`;
+    }
+
+    // Cube 
+    function cube(num) {
+      const cb = num * num * num;
+      console.log(`Cube: ${cb}`);
+      alert(`Cube: ${cb}`);
+      document.write(`<br>Cube: ${cb}`);
+      document.getElementById("result").innerHTML = `Cube: ${cb}`;
+    }
+
+    //  Factorial
+    function factorial(num) {
+      if (num === 0 || num === 1){
+        return 1;
+      }
+      else{
+        return num * factorial(num - 1);
+      }
+    }
+
+    function showFactorial(num) {
+      const result = factorial(num);
+      console.log(`Factorial: ${result}`);
+      alert(`Factorial: ${result}`);
+      document.write(`<br>Factorial: ${result}`);
+      document.getElementById("result").innerHTML = `Factorial of ${num} = ${result}`;
+    }
+
+    //  Even/Odd 
+    function isEven(num) {
+      return num % 2 === 0;
+    }
+
+    function evenOdd(num) {
+      const msg = isEven(num) ? `${num} is Even` : `${num} is Odd`;
+      console.log(msg);
+      alert(msg);
+      document.write(`<br>${msg}`);
+      document.getElementById("result").innerHTML = msg;
+    }
+
+    // Loop Demonstration
+    function loopDemo() {
+      console.log("Loop Demo Started");
+      document.write("<br>Loop Demo:<br>");
+      document.getElementById("result").innerHTML = "Loop Demo Running...";
+
+      // for loop
+      for (let i = 1; i <= 3; i++) {
+        console.log("For loop:", i);
+        document.write(`For loop count: ${i}<br>`);
+      }
+
+      // while loop
+      let j = 1;
+      while (j <= 2) {
+        console.log("While loop:", j);
+        document.write(`While loop count: ${j}<br>`);
+        j++;
+      }
+
+      // do-while loop
+      let k = 1;
+      do {
+        console.log("Do-While loop:", k);
+        document.write(`Do-While loop count: ${k}<br>`);
+        k++;
+      } while (k <= 2);
+
+      alert("Loop Demo Completed!");
+      document.getElementById("result").innerHTML = "Loop Demo Completed!";
+    }
+
+    // Menu 
+    function menu() {
+      let choice;
+      do {
+        choice = parseInt(prompt(`SMART CALCULATOR MENU
+1. Arithmetic Calculator
+2. Square
+3. Cube
+4. Factorial
+5. Even/Odd Checker
+6. Loop Demo
+7. Exit
+Enter your choice (1-7):`));
+
+        if (choice == 1) {
+          let a = parseFloat(prompt("Enter first number:"));
+          let b = parseFloat(prompt("Enter second number:"));
+          let op = prompt("Enter operator (+, -, *, /, %):");
+          arithmetic(a, b, op);
+        }
+        else if (choice == 2) {
+          let n = parseFloat(prompt("Enter a number:"));
+          square(n);
+        }
+        else if (choice == 3) {
+          let n = parseFloat(prompt("Enter a number:"));
+          cube(n);
+        }
+        else if (choice == 4) {
+          let n = parseInt(prompt("Enter a number:"));
+          showFactorial(n);
+        }
+        else if (choice == 5) {
+          let n = parseInt(prompt("Enter a number:"));
+          evenOdd(n);
+        }
+        else if (choice == 6) {
+          loopDemo();
+        }
+        else if (choice == 7) {
+          alert("Exiting Smart Calculator. Thank you!");
+          document.write("<br>Exited Smart Calculator.");
+          document.getElementById("result").innerHTML = "Exited Smart Calculator.";
+        }
+        else {
+          alert("Invalid choice! Please enter a number between 1-7.");
+        }
+
+      } while (choice !== 7);
+    }
+
+    menu();
+  </script>
+</body>
+
+</html>
